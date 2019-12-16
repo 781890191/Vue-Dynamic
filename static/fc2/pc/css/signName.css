@@ -1,0 +1,237 @@
+@charset "utf-8";
+/* CSS Document */
+/*画板*/
+.signName  
+{  
+    width: 602px;  
+    overflow: hidden;  
+    height: 390px;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+         -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    font-family: "微软雅黑";
+    background:#fff url(../images/ewm_btn.png) no-repeat top left;
+    z-index: 100;
+    display: block;
+} 
+.signName2{
+    background-image: url(../images/sign_btn.png);
+}
+.signName h2{
+    line-height: 68px;
+    font-weight: normal;
+    font-size: 16px;
+}
+.signName .ewm_btn{
+    width: 70px;
+    height: 68px;
+    cursor: pointer;
+} 
+.signName .close{
+    font-size: 34px;
+    line-height: 34px;
+    padding-right: 10px;
+    color:#ccc;
+}
+#canvas  
+{  
+    width: 560px;
+    border: 1px #ddd dashed; 
+    margin:0 auto;
+    display: block;
+    border-radius: 3px;
+    cursor: url("http://www.useragentman.com/examples/cursor/canvasPainter/canvas_painter_v0.1/images/gimpBrush.png") 0 32, crosshair;
+} 
+#control  
+{      
+    background: #fff;
+    padding:10px 20px 20px;
+}
+.control_r{
+    padding-top: 10px;
+}  
+#canvas-color div.tac 
+{  
+    overflow: hidden; 
+    padding-top: 10px; 
+}  
+#canvas-color div span 
+{  
+    display: inline-block;  
+    width: 14px;  
+    height: 14px;  
+    border-radius: 100%; 
+    margin:0 10px;  
+    cursor: pointer;  
+} 
+#control h5{
+    font-weight: normal;
+    color:#999;
+    text-align: center;
+} 
+#canvas-color ul li.js-border-color  
+{  
+    border-color: #000;  
+} 
+#canvas-brush{
+    margin-right: 90px;
+} 
+#canvas-brush span  
+{  
+    display: inline-block;  
+    margin-right: 20px;  
+    cursor: pointer;
+    margin-top: 10px;  
+}  
+#canvas-brush span.small-brush  
+{  
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border-radius: 100%;
+}  
+#canvas-brush span.middle-brush  
+{  
+   width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 100%;
+}  
+#canvas-brush span.big-brush  
+{  
+    width: 13px;
+    height: 13px;
+    background: #000;
+    margin-right: 0;
+    border-radius: 100%;  
+}  
+#canvas-brush span.js-bg-color  
+{  
+    background-color: #aaa;  
+}  
+#canvas-control span  
+{  
+    display: inline-block;   
+    margin-right: 10px;   
+    cursor: pointer;  
+}  
+#canvas-control span.return-control  
+{  
+    background-position: -2px -148px;  
+}  
+#canvas-control span.next-control  
+{  
+    background-position: right -168px;  
+}  
+#canvas-control span.empty-control  
+{  
+    line-height: 32px;
+    margin-right: 20px;
+}  
+#canvas-control span.js-return-control  
+{  
+    background-position: -2px -209px;  
+}  
+#canvas-control span.js-next-control  
+{  
+    background-position: right -230px;  
+}  
+#canvas-control span.js-empty-control  
+{  
+    background-position: -2px -251px;  
+}  
+.small-brush{
+    width: 12px;
+    height: 12px;
+    background: blue;
+    border:1px solid #ddd;
+    border-radius:100%;
+}
+.middle-brush{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border:1px solid #ddd;
+    background: blue;
+}
+.big-brush{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border:1px solid #ddd;
+    background: blue;
+}
+span.cur{
+    border-color: #ddd;
+}
+.drawImage{
+    width: 110px;
+    height: 30px;
+    background: #4091fb;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    list-style: none;
+    border: 0 none;
+    color:#fff;
+    font-family: "微软雅黑";
+    cursor:pointer;
+}
+/*#imgDiv{
+    width: 80px;
+    height: 30px;
+    display: block;
+}*/
+button{
+    font-size: 16px;
+}
+.signName2 .saoma{
+    width: 190px;
+    height: 190px;
+    margin: 20px auto 40px;
+    padding:12px 10px;
+    box-sizing: border-box;
+    background: url(../images/sao_bg.png) no-repeat center center;
+}
+.signName2 .sao_txt{
+    display:inline-block;
+    padding-left: 35px;
+    position: relative;
+    line-height: 30px;
+}
+.signName2 .sao_txt::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top:2px;
+    width: 35px;
+    height: 25px;
+    background: url(../images/sao_icon.png) no-repeat left center;
+}
+/* 签章的盒子大小 */
+#signatureSize #imgDiv{
+	width: 100%;
+	font-size: 0px;
+} 
+#imgDiv img{
+	width: 100%;
+}
+.icon_flex_box{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 5;
+	/* display: none; */
+	cursor: se-resize;
+}
+.icon_flex_box img{
+	width: 100%;
+	height: 100%;
+}

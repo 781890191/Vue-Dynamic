@@ -1,6 +1,6 @@
-# bfcsto
+# Vue-Dynamic
 
-> BFC STO
+> vue动态路由菜单
 
 ## Build Setup
 

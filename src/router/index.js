@@ -1,170 +1,97 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import App from '@/App'
-import Layout from '@/components/common/Layout'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-// public
-import Login from '@/components/public/Login'
-//management
-import ManagementLayout from '@/components/management/common/Layout'
+Vue.use(VueRouter);
 
-//product 电子协议
-import Product from '@/components/management/product/Product'
-import ProtocolList from '@/components/management/product/ProtocolList'
-import CustomerProtocolList from '@/components/management/product/CustomerProtocolList'
-
-
-//Department 企业通讯录
-import Department from '@/components/management/department/Department'
-import DeptList from '@/components/management/department/DeptList'
-
-// Seal 认证设置
-import Certification from '@/components/management/certification/Certification'
-import SubordinateBodyList from '@/components/management/certification/SubordinateBodyList'
-import SealList from '@/components/management/certification/SealList'
-
-// tool 辅助工具
-import Tool from "@/components/management/tool/Tool"
-import CalculateFileHash from '@/components/management/tool/CalculateFileHash'
-import SearchCustomerInfo from '@/components/management/tool/SearchCustomerInfo'
-
-//account Info 账户管理
-import AccountInfo from '@/components/management/accountInfo/AccountInfo'
-import AccountBaseInfo from '@/components/management/accountInfo/BaseInfo'
-
-Vue.use(Router);
-
-const router = new Router({
-  routes: [
-    {
-      path: '/',
-      component: App,
-      children: [
-        {
-          path: '/',
-          component: Layout,
-          children: [
-            {
-              path: '/',
-              name: 'index',
-              // component: Index,
-              redirect:'/login'
-            }
-          ]
+const routes = [
+  {
+    path: "/",
+    redirect: "layout",
+  },
+  {
+    path: "/login",
+    component: () => import("@/views/login.vue")
+  },
+  {
+    path: '/layout',
+    component: () => import("@/views/common/Layout.vue"),
+    redirect: "/layout/base1",
+    children: [
+      {
+        path: 'base1',
+        meta: {
+          supers:'用户菜单1', // 一级菜单名称
+          stage:'用户菜单1-1', // 二级菜单名称
         },
-        {
-          path: 'management',
-          component: ManagementLayout,
-          meta: {requireLogin: true},
-          children: [
-            {
-              path: '/',
-              name: 'managementIndex',
-              redirect: '/management/product/protocol/list'
-            },
-            {
-              path: 'product',
-              name: 'Product',
-              component: Product,
-              children: [
-                {
-                  path: 'protocol/list',
-                  name: 'ProtocolList',
-                  component: ProtocolList
-                },
-                {
-                  path: 'protocol/customer/list',
-                  name: 'CustomerProtocolList',
-                  component: CustomerProtocolList 
-                },
-              ]
-            },
-            {
-              path: 'dept',
-              name: 'Department',
-              component: Department,
-              children: [
-                {
-                  path: 'dept/list',
-                  name: 'DeptList',
-                  component: DeptList
-                }
-              ]
-            },
-            {
-              path: 'certification',
-              name: 'Certification',
-              component: Certification,
-              children: [
-                {
-                  path: 'seal/list',
-                  name: 'SealList',
-                  component: SealList
-                },
-                {
-                  path: 'subordinateBody/list',
-                  name: 'SubordinateBodyList',
-                  component: SubordinateBodyList
-                },
-              ]
-            },
-            {
-              path: 'tool',
-              name: 'Tool',
-              component: Tool,
-              children: [
-                {
-                  path: 'calcFileHash',
-                  name: 'CalcFileHash',
-                  component: CalculateFileHash
-                },
-                {
-                  path: 'searchCustomerInfo',
-                  name: 'SearchCustomerInfo',
-                  component: SearchCustomerInfo
-                }
-              ]
-            },
-            {
-              path: 'account',
-              name: 'AccountInfo',
-              component: AccountInfo,
-              children: [
-                {
-                  path: 'account/info',
-                  name: 'AccountBaseInfo',
-                  component: AccountBaseInfo
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-  ]
-});
-// 简单判断下
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requireLogin) ) {
-    let user = localStorage.getItem('user');
-    if (!user){
-      router.app.$notify.error({
-        title: '当前用户未登录，请先登陆'
-      });
-      next({
-        name: 'login',
-      })
-    } else {
-      next();
-    }
-  }else {
-    next();
+        component: () => import("@/views/components/base1.vue"),
+      },
+      {
+        path: 'base2',
+        meta: {
+          supers:'用户菜单1', // 一级菜单名称
+          stage:'用户菜单1-2', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base2.vue"),
+      },
+      {
+        path: 'base3',
+        meta: {
+          supers:'用户菜单2', // 一级菜单名称
+          stage:'用户菜单2-1', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base3.vue"),
+      },
+      {
+        path: 'base4',
+        meta: {
+          supers:'用户菜单3', // 一级菜单名称
+          stage:'用户菜单3-1', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base4.vue"),
+      },
+      {
+        path: 'base5',
+        meta: {
+          supers:'用户菜单3', // 一级菜单名称
+          stage:'用户菜单3-1', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base5.vue"),
+      },
+      {
+        path: 'base6',
+        meta: {
+          supers:'用户菜单4', // 一级菜单名称
+          stage:'用户菜单4-1', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base6.vue"),
+      },
+      {
+        path: 'base7',
+        meta: {
+          supers:'用户菜单4', // 一级菜单名称
+          stage:'用户菜单4-2', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base7.vue"),
+      },
+      {
+        path: 'base8',
+        meta: {
+          supers:'管理员菜单', // 一级菜单名称
+          stage:'管理员菜单', // 二级菜单名称
+        },
+        component: () => import("@/views/components/base8.vue"),
+      },
+    ]
   }
+];
+
+const router = new VueRouter({
+  routes,
 });
 
-export default router
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('user'); //假设缓存的就是token
+  token || (to.path == '/login') ? next() : next('/login');
+})
+
+export default router;
